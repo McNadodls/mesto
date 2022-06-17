@@ -33,7 +33,8 @@
 @import url(../blocks/popup/__edit-subtitle/popup__edit-subtitle.css);
 @import url(../blocks/popup/__save-botton/popup__save-botton.css);
 
-@import url(../blocks/botton-opacity/botton-opasity.css);
-@import url(../blocks/botton-opacity/_80/botton-opacity_80.css);
-@import url(../blocks/botton-opacity/_60/botton-opacity_60.css);
-@import url(../blocks/botton-opacity/_50/botton-opacity_50.css);
+@import url(../blocks/botton/botton.css);
+@import url(../blocks/botton/_opacity/botton_opacity.css);
+@import url(../blocks/botton/_opacity/_80/botton_opacity_80.css);
+@import url(../blocks/botton/_opacity/_60/botton_opacity_60.css);
+@import url(../blocks/botton/_opacity/_50/botton_opacity_50.css);
