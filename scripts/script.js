@@ -1,8 +1,8 @@
 let container = document.querySelector('.body');
 let editPopup = container.querySelector('.popup');
-let showEditBotton = container.querySelector('.profile__edit-botton');
-let closeEditBotton = container.querySelector('.popup__close-botton');
-let saveEditPopup = container.querySelector('.popup__save-botton');
+let showEditbutton = container.querySelector('.profile__edit-button');
+let closeEditbutton = container.querySelector('.popup__close-button');
+let saveEditPopup = container.querySelector('.popup__save-button');
 let profileTitle = container.querySelector('.profile__title');
 let profileSubtitle = container.querySelector('.profile__subtitle');
 let profileTitlePopup = container.querySelector('.popup__edit-title');
@@ -14,13 +14,13 @@ function showEditPopup(){
     profileTitlePopup.value = profileTitle.textContent;
     profileSubtitlePopup.value = profileSubtitle.textContent;
 }
-showEditBotton.addEventListener('click',showEditPopup);
+showEditbutton.addEventListener('click',showEditPopup);
 
 function closeEditPopup(){
     editPopup.classList.remove('popup_show');
     editPopup.classList.add('popup_close');
 }
-closeEditBotton.addEventListener('click',closeEditPopup);
+closeEditbutton.addEventListener('click',closeEditPopup);
 
 function textСhange() {
     profileTitle.textContent = profileTitlePopup.value;
