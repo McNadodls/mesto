@@ -1,0 +1,19 @@
+.popup__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 282px;
+    margin: 87px auto;
+    gap: 16px;
+}
+
+@media screen and (min-width: 880px) {
+    .popup__form {
+        display: grid;
+        grid-template-columns: 1fr 430px 1fr;
+        grid-template-rows: min-content min-content;
+        max-width: 510px;
+        margin: 155px auto;
+        gap: 8px;
+    }
+
+}

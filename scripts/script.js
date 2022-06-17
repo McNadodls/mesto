@@ -9,18 +9,18 @@ let profileTitlePopup = document.querySelector('.popup__edit_input_title');
 let profileSubtitlePopup = document.querySelector('.popup__edit_input_subtitle');
 
 function openedPopup(){
-    widowPopup.classList.add('popup_opened');
+  widowPopup.classList.add('popup_opened');
 }
 
 function formSubmitHandler (evt) {
-    evt.preventDefault();
-    profileTitle.textContent = profileTitlePopup.value;
-    profileSubtitle.textContent = profileSubtitlePopup.value;
-    widowPopup.classList.remove('popup_opened');
+  evt.preventDefault();
+  profileTitle.textContent = profileTitlePopup.value;
+  profileSubtitle.textContent = profileSubtitlePopup.value;
+  widowPopup.classList.remove('popup_opened');
 }
 
 function closePopup(){
-    widowPopup.classList.remove('popup_opened');
+  widowPopup.classList.remove('popup_opened');
 }
 
 profileEditBtn.addEventListener('click',openedPopup);
