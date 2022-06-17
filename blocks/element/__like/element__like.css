@@ -1,0 +1,15 @@
+.element__like {
+    width: 22px;
+    height: 19px;
+    background: url(../../../images/like-icon/like.svg) no-repeat center;
+    border: none;
+}
+
+.element__like:active {
+    background: url(../../../images/like-icon/like-aktive.svg) no-repeat center;
+    overflow: 1;
+}
+
+.element__like:hover {
+    opacity: 0.5;
+}
