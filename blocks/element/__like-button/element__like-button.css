@@ -1,0 +1,14 @@
+.element__like-button {
+    width: 22px;
+    height: 19px;
+    background: url(../../../images/like-icon/like.svg) no-repeat center;
+}
+
+/*.element__like-button:active {
+    background: url(../../../images/like-icon/like-aktive.svg) no-repeat center;
+    overflow: 1;
+}*/
+
+.element__like-button:hover {
+    opacity: 0.5;
+}
