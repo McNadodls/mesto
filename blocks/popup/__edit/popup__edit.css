@@ -1,0 +1,21 @@
+.popup__edit {
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    width: 238px;
+    height: 27px;
+    border: none;
+    resize: none;
+}
+
+.popup__edit:focus, input:focus{
+    outline: 0;
+}
+
+@media screen and (min-width: 880px) {
+    .popup__edit {
+        width: 358px;
+    }
+}

@@ -1,30 +1,28 @@
-let container = document.querySelector('.body');
-let editPopup = container.querySelector('.popup');
-let showEditbutton = container.querySelector('.profile__edit-button');
-let closeEditbutton = container.querySelector('.popup__close-button');
-let saveEditPopup = container.querySelector('.popup__save-button');
-let profileTitle = container.querySelector('.profile__title');
-let profileSubtitle = container.querySelector('.profile__subtitle');
-let profileTitlePopup = container.querySelector('.popup__edit-title');
-let profileSubtitlePopup = container.querySelector('.popup__edit-subtitle');
+let widowPopup = document.querySelector('.popup');
+let profileEditBtn = document.querySelector('.profile__edit-button');
+let popupCloseBtn = document.querySelector('.popup__close-button');
+let popupSaveBtn = document.querySelector('.popup__save-button');
+let popupWidow = document.querySelector('.popup__window');
+let profileTitle = document.querySelector('.profile__title');
+let profileSubtitle = document.querySelector('.profile__subtitle');
+let profileTitlePopup = document.querySelector('.popup__edit_input_title');
+let profileSubtitlePopup = document.querySelector('.popup__edit_input_subtitle');
 
-function showEditPopup(){
-    editPopup.classList.remove('popup_close');
-    editPopup.classList.add('popup_show');
-    profileTitlePopup.value = profileTitle.textContent;
-    profileSubtitlePopup.value = profileSubtitle.textContent;
+function openedPopup(){
+    widowPopup.classList.add('popup_opened');
 }
-showEditbutton.addEventListener('click',showEditPopup);
 
-function closeEditPopup(){
-    editPopup.classList.remove('popup_show');
-    editPopup.classList.add('popup_close');
-}
-closeEditbutton.addEventListener('click',closeEditPopup);
-
-function textСhange() {
+function formSubmitHandler (evt) {
+    evt.preventDefault();
     profileTitle.textContent = profileTitlePopup.value;
     profileSubtitle.textContent = profileSubtitlePopup.value;
-    closeEditPopup()
+    widowPopup.classList.remove('popup_opened');
 }
-saveEditPopup.addEventListener('click',textСhange);
+
+function closePopup(){
+    widowPopup.classList.remove('popup_opened');
+}
+
+profileEditBtn.addEventListener('click',openedPopup);
+popupCloseBtn.addEventListener('click',closePopup);
+popupWidow.addEventListener('submit', formSubmitHandler); 
