@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Место Росиия">
+    <meta name="kaywords" content="HTML, CSS, БЭМ, JS, Практическа №4, Адаптивная вёрстка, Место Росиия">
+    <meta name="author" content="Мансуров Дмитрий">
+    <meta name="author" content="Яндекс Практикум">
+    <title>Место Росиия</title>
+    <link rel="stylesheet" type="text/css" href="pages/index.css">
+</head>
+<body class="body">
+<div class="page">
+    <header class="header">
+        <img class="header__logo" src="images/logo/Vector.svg" alt="Место Россия">
+    </header>
+    <main class="content">
+        <section class="profile">
+            <div class="profile__card">
+                <img class="profile__image" src="images/profile/image.png" alt="Фото профиля">
+                <div class="profile__info">
+                    <h1 class="profile__title text-overflow">Жак-Ив Кусто</h1>
+                    <botton class="profile__edit-botton botton-opacity_60" type='button'></botton>
+                    <p class="profile__subtitle text-overflow">Исследователь океана</p>
+                </div>
+            </div>
+            <botton class="profile__add-botton botton-opacity_50"></botton>
+        </section>
+        <section class="elements">
+            <article class="element"> <!--1-->
+                <img class="element__image" src="images/Element/kirill-pershin-1088404-unsplash.png" alt="Изображение">
+                <div class="element__group">
+                    <h2 class="element__signature text-overflow">Карачаевск</h2>
+                    <button class="element__like botton-opacity_50"></button>
+                </div>
+            </article>
+            <article class="element"> <!--2-->
+                <img class="element__image" src="images/Element/kirill-pershin-1404681-unsplash.png " alt="Изображение">
+                <div class="element__group">
+                    <h2 class="element__signature text-overflow">Гора Эльбрус</h2>
+                    <button class="element__like botton-opacity_50"></button>
+                </div>
+            </article>
+            <article class="element"> <!--3-->
+                <img class="element__image" src="images/Element/kirill-pershin-1556355-unsplash.png" alt="Изображение">
+                <div class="element__group">
+                    <h2 class="element__signature text-overflow">Карачаевск</h2>
+                    <button class="element__like botton-opacity_50"></button>
+                </div>
+            </article>
+            <article class="element"> <!--4-->
+                <img class="element__image" src="images/Element/kirill-pershin-1088404-unsplash.png" alt="Изображение">
+                <div class="element__group">
+                    <h2 class="element__signature text-overflow">Карачаевск</h2>
+                    <button class="element__like botton-opacity_50"></button>
+                </div>
+            </article>
+            <article class="element"> <!--5-->
+                <img class="element__image" src="images/Element/kirill-pershin-1404681-unsplash.png" alt="Изображение">
+                <div class="element__group">
+                    <h2 class="element__signature text-overflow">Эльбрус</h2>
+                    <button class="element__like botton-opacity_50"></button>
+                </div>
+            </article>
+            <article class="element"> <!--6-->
+                <img class="element__image" src="images/Element/kirill-pershin-1556355-unsplash.png" alt="Изображение">
+                <div class="element__group">
+                    <h2 class="element__signature text-overflow">Домбай</h2>
+                    <button class="element__like botton-opacity_50"></button>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+    </footer>
+</div>
+<form class="popup popup_close" action="">
+    <div class="popup__form">
+        <button class="popup__close-botton botton-opacity_60" type='button'></button>
+        <div class="popup__window">
+            <label class="popup__title">Редактировать профиль</label>
+            <input class="popup__edit-title">
+            <input class="popup__edit-subtitle">
+            <button class="popup__save-botton botton-opacity_80" type='button'>Сохранить</button>
+        </div>
+    </div>
+</form>
+<script src="scripts/script.js"></script>
+</body>
+</html>
+ 
