@@ -4,7 +4,7 @@ let popupBtn = document.querySelector('.popup__close-button');
 let popupContainer = document.querySelector('.popup__container');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
-let profilePopup = document.querySelectorAll('.popup__edit');
+let profilePopup = document.querySelectorAll('.popup__input');
 
 function openedPopup(){
   widowPopup.classList.add('popup_opened');
