@@ -4,18 +4,19 @@ let popupBtn = document.querySelector('.popup__close-button');
 let popupContainer = document.querySelector('.popup__container');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
-let profilePopup = document.querySelectorAll('.popup__input');
+let popupInputName = document.querySelector('.popup__input_type_name');
+let popupInputProfession = document.querySelector('.popup__input_type_profession');
 
 function openedPopup(){
   widowPopup.classList.add('popup_opened');
-  profilePopup[0].value = profileTitle.textContent;
-  profilePopup[1].value = profileSubtitle.textContent;
+  popupInputName.value = profileTitle.textContent;
+  popupInputProfession.value = profileSubtitle.textContent;
 }
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
-  profileTitle.textContent = profilePopup[0].value;
-  profileSubtitle.textContent = profilePopup[1].value;
+  profileTitle.textContent = popupInputName.value;
+  profileSubtitle.textContent = popupInputProfession.value;
   widowPopup.classList.remove('popup_opened');
 }
 
