@@ -1,6 +1,26 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts/inter/inter.css);
+
 @import url(../blocks/button/button.css);
+@import url(../blocks/button/_type/button_type_add.css);/*в можификаторе _type находится только внешний вид кнопки*/
+@import url(../blocks/button/_type/button_type_close.css);
+@import url(../blocks/button/_type/button_type_edit.css);
+@import url(../blocks/button/_type/buttont_type_like.css);
+@import url(../blocks/button/_type/buttont_type_like-active.css);
+@import url(../blocks/button/_type/button_type_send.css);
+@import url(../blocks/button/_type/button_type_delite.css);
+@import url(../blocks/button/_do/_profile/button_do_profile_edit.css); /*В одификаторе _do присваивается расположение относительно других элементов и вривязка к JS*/
+@import url(../blocks/button/_do/_profile/button_do_profile_add.css);
+@import url(../blocks/button/_do/_element/button_do_element_delete.css);
+@import url(../blocks/button/_do/_element/button_do_element_like.css);
+@import url(../blocks/button/_do/_popup/button_do_popup_close-card.css);
+@import url(../blocks/button/_do/_popup/button_do_popup_close-profile.css);
+@import url(../blocks/button/_do/_popup/button_do_popup_close-image.css);
+@import url(../blocks/button/_do/_popup/button_do_popup_edit-profile.css);
+@import url(../blocks/button/_do/_popup/button_do_popup_create.css);
+
+
+
 @import url(../blocks/body/body.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/text-overflow/text-overflow.css);
@@ -12,24 +32,26 @@
 @import url(../blocks/profile/__image/profile__image.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__title/profile__title.css);
-@import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
-@import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/element/__image/element__image.css);
 @import url(../blocks/element/__group/element__group.css);
 @import url(../blocks/element/__signature/element__signature.css);
-@import url(../blocks/element/__like-button/element__like-button.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_type/popup_type_profile.css);
+@import url(../blocks/popup/_type/popup_type_card.css);
+@import url(../blocks/popup/_type/popup_type_img.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
-@import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__image-container/popup__image-container.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_name.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_profession.css);
-@import url(../blocks/popup/__save-button/popup__save-button.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__signature/popup__signature.css);
