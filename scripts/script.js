@@ -1,26 +1,26 @@
 let widowPopupProfile = document.querySelector('.popup_type_profile');
-let editProfileBtn = document.querySelector('.button_do_profile_edit');
-let closePopupProfileBtn = document.querySelector('.button_do_popup_close-profile');
+let editProfileBtn = document.querySelector('.button_do_profile-edit');
+let closePopupProfileBtn = document.querySelector('.button_do_popup-close-profile');
 let formProfile = document.querySelector('.popup__form_type_profile');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 let popupInputName = document.querySelector('.popup__input_type_name');
 let popupInputProfession = document.querySelector('.popup__input_type_profession');
 
-let addElementBtn = document.querySelector('.button_do_profile_add');
+let addElementBtn = document.querySelector('.button_do_profile-add');
 let widowPopupCard = document.querySelector('.popup_type_card');
 let elementTitle = document.querySelector('.popup__input_type_title'); 
 let elementUrl = document.querySelector('.popup__input_type_url-img'); 
 
 const elementsTemplate = document.querySelector('#elements-template'); 
 let elements = document.querySelector('.elements');
-let closeCardPopupBtn = document.querySelector('.button_do_popup_close-card');
+let closeCardPopupBtn = document.querySelector('.button_do_popup-close-card');
 let formCard = document.querySelector('.popup__form_type_card');
 
 let widowPopupImage = document.querySelector('.popup_type_img');
 let imagePopup = document.querySelector('.popup__image');
 let signaturePopup = document.querySelector('.popup__signature');
-let closeImagePopupBtn = document.querySelector('.button_do_popup_close-image');
+let closeImagePopupBtn = document.querySelector('.button_do_popup-close-image');
 
 const initialCards = [
   {
@@ -55,7 +55,7 @@ function addCardNew(name, link){
   const elementTemplate = elementsTemplate.content.cloneNode(true);
   const image = elementTemplate.querySelector('.element__image');
   const ImageLink = elementTemplate.querySelector('.buttont_type_like');
-  const delite = elementTemplate.querySelector('.button_do_element_delete');
+  const delite = elementTemplate.querySelector('.button_do_element-delete');
   elementTemplate.querySelector('.element__signature').textContent = name;
   image.src = link;
   image.alt = name;

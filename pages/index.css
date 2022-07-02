@@ -8,17 +8,15 @@
 @import url(../blocks/button/_type/buttont_type_like.css);
 @import url(../blocks/button/_type/buttont_type_like-active.css);
 @import url(../blocks/button/_type/button_type_send.css);
-@import url(../blocks/button/_type/button_type_delite.css);
-@import url(../blocks/button/_do/_profile/button_do_profile_edit.css); /*В одификаторе _do присваивается расположение относительно других элементов и вривязка к JS*/
-@import url(../blocks/button/_do/_profile/button_do_profile_add.css);
-@import url(../blocks/button/_do/_element/button_do_element_delete.css);
-@import url(../blocks/button/_do/_element/button_do_element_like.css);
-@import url(../blocks/button/_do/_popup/button_do_popup_close-card.css);
-@import url(../blocks/button/_do/_popup/button_do_popup_close-profile.css);
-@import url(../blocks/button/_do/_popup/button_do_popup_close-image.css);
-@import url(../blocks/button/_do/_popup/button_do_popup_edit-profile.css);
-@import url(../blocks/button/_do/_popup/button_do_popup_create.css);
-
+@import url(../blocks/button/_type/button_type_delite.css); /*В одификаторе _do присваивается расположение относительно других элементов и вривязка к JS*/
+@import url(../blocks/button/_do/button_do_element-delete.css);
+@import url(../blocks/button/_do/button_do_popup-close-card.css);
+@import url(../blocks/button/_do/button_do_popup-close-image.css);
+@import url(../blocks/button/_do/button_do_popup-close-profile.css);
+@import url(../blocks/button/_do/button_do_popup-create.css);
+@import url(../blocks/button/_do/button_do_popup-edit-profile.css);
+@import url(../blocks/button/_do/button_do_profile-add.css);
+@import url(../blocks/button/_do/button_do_profile-edit.css);
 
 
 @import url(../blocks/body/body.css);
