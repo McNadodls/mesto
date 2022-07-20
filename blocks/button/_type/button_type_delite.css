@@ -1,0 +1,10 @@
+.button_type_delite {
+    position: absolute;
+    width: 22px;
+    height: 19px;
+    background: url(../../../images/delite-icon/delite-icon.svg) no-repeat center;
+  }
+  
+  .button_type_delite:hover {
+    opacity: 0.5;
+  }

@@ -8,8 +8,9 @@
 @import url(../blocks/button/_type/buttont_type_like.css);
 @import url(../blocks/button/_type/buttont_type_like-active.css);
 @import url(../blocks/button/_type/button_type_send.css);
-@import url(../blocks/button/_type/button_type_delite.css); /*В одификаторе _do присваивается расположение относительно других элементов и вривязка к JS*/
-@import url(../blocks/button/_do/button_do_element-delete.css);
+@import url(../blocks/button/_type/button_type_delite.css);
+@import url(../blocks/button/_type/buttont_type_disabled.css);/*disabled*/
+@import url(../blocks/button/_do/button_do_element-delete.css);/*В одификаторе _do присваивается расположение относительно других элементов и вривязка к JS*/
 @import url(../blocks/button/_do/button_do_popup-close-card.css);
 @import url(../blocks/button/_do/button_do_popup-close-image.css);
 @import url(../blocks/button/_do/button_do_popup-close-profile.css);
@@ -17,7 +18,6 @@
 @import url(../blocks/button/_do/button_do_popup-edit-profile.css);
 @import url(../blocks/button/_do/button_do_profile-add.css);
 @import url(../blocks/button/_do/button_do_profile-edit.css);
-
 
 @import url(../blocks/body/body.css);
 @import url(../blocks/page/page.css);
@@ -49,7 +49,10 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_error.css);/*Бордер ошибки*/
 @import url(../blocks/popup/__input/_type/popup__input_type_name.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_profession.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);/*текст ошибки*/
+@import url(../blocks/popup/__input-error/_active/popup__input-error_active.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__signature/popup__signature.css);
