@@ -1,85 +1,78 @@
-const dateForm = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.button_type_send',
-  inactiveButtonClass: 'buttont_type_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}
+import {configForm} from './script.js';
 
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, configForm) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add(dateForm.inputErrorClass);
+  inputElement.classList.add(configForm.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(dateForm.errorClass);
+  errorElement.classList.add(configForm.errorClass);
 }
 
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, configForm) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove(dateForm.inputErrorClass);
-  errorElement.classList.remove(dateForm.errorClass);
+  inputElement.classList.remove(configForm.inputErrorClass);
+  errorElement.classList.remove(configForm.errorClass);
   errorElement.textContent = '';
 }
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, configForm) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, configForm);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, configForm);
   }
+  checkButtonValidateImputs(formElement, configForm);
 }
 
-const setEventListeners = (formElement) => { //элем из массава(объекта)
-  const inputList = Array.from(formElement.querySelectorAll(dateForm.inputSelector));
-  const buttonElement = formElement.querySelector(dateForm.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement);
-  inputList.forEach((inputElement) => {
+const setEventListeners = (formElement, configForm) => { //элем из массава(объекта)
+  const inputList = Array.from( formElement.querySelectorAll(configForm.inputSelector) );
+  const buttonElement = formElement.querySelector(configForm.submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, configForm);
+  inputList.forEach( (inputElement) => {
     inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement);//прослушка для проверки валидности
-      toggleButtonState(inputList, buttonElement);
+      checkInputValidity(formElement, inputElement, configForm);//прослушка для проверки валидности
+      toggleButtonState(inputList, buttonElement, configForm);
     });
   });
 }
 
 const enableValidation = (formElement) => {
-  const formList = Array.from(document.querySelectorAll(dateForm.formSelector));
-  formList.forEach((formElement) => {//для массива(объекта) =>
-    formElement.addEventListener('submit ', function (evt) {//прослушка на каждый элем
-      evt.preventDefault(); //откл поведение
-    });
-    setEventListeners(formElement);//при изменении передаем элем дальше
+  const formList = Array.from(document.querySelectorAll(configForm.formSelector));
+  formList.forEach( (formElement) => {//для массива(объекта) =>
+    setEventListeners(formElement, configForm);//при изменении передаем элем дальше
   });
 }
 
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-  return !inputElement.validity.valid;
+const hasInvalidInput = (inputList, configForm) => {
+  return inputList.some( (inputElement) => {
+    return !inputElement.validity.valid;
 }); 
 }
 
-const toggleButtonState  = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)){
-    buttonElement.classList.add(dateForm.inactiveButtonClass);
+const toggleButtonState  = (inputList, buttonElement, configForm) => {
+  if ( hasInvalidInput(inputList, configForm) ) {
+    buttonElement.classList.add(configForm.inactiveButtonClass);
 } else {
-  buttonElement.classList.remove(dateForm.inactiveButtonClass); 
+    buttonElement.classList.remove(configForm.inactiveButtonClass); 
   }
 }
 
-function checkInputValidateImputs(formElement, dateForm) {
-  const inputList = Array.from(formElement.querySelectorAll(dateForm.inputSelector));
-  let inputStatus = false;
-  for (let i =0; i<inputList.length;i++) {
-    if (!inputList[i].validity.valid) {
-      inputStatus = false;
-      break;
-    } else {
-      inputStatus = true;
-    }
+function checkInputValidateImputs(formElement, configForm) {
+  const inputList = Array.from( formElement.querySelectorAll(configForm.inputSelector) );
+  return inputList.every(function(elem) {
+    return elem.validity.valid;
+  });
+}
+
+function checkButtonValidateImputs(formElement, configForm) {
+  const buttonElement = formElement.querySelector(configForm.submitButtonSelector);
+  if (checkInputValidateImputs(formElement, configForm)) {
+    buttonElement.removeAttribute('disabled');
+    buttonElement.classList.remove(configForm.inactiveButtonClass);
+  } else {
+    buttonElement.setAttribute('disabled', '');
+    buttonElement.classList.add(configForm.inactiveButtonClass);
   }
-  return inputStatus;
 }
 
 
-
-enableValidation(dateForm);
-export { checkInputValidateImputs, dateForm};
+export { checkButtonValidateImputs, enableValidation };
