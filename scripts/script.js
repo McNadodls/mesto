@@ -1,6 +1,6 @@
 import { checkButtonValidateImputs, enableValidation} from './validate.js';
 import { initialCards } from './initialCards.js';
-const ecs = 'Escape';
+const ecsKey = 'Escape';
 const popups = document.querySelectorAll('.popup');
 const widowPopupProfile = document.querySelector('.popup_type_profile');
 const editProfileBtn = document.querySelector('.button_do_profile-edit');
@@ -35,12 +35,12 @@ const configForm = {
 
 
 
-function createCardNew(name, link) {
-  const elementCardNew = elementsTemplate.content.cloneNode(true);
-  const image = elementCardNew.querySelector('.element__image');
-  const ImageLink = elementCardNew.querySelector('.buttont_type_like');
-  const buttonDelete = elementCardNew.querySelector('.button_do_element-delete');
-  elementCardNew.querySelector('.element__signature').textContent = name;
+function createNewCard(name, link) {
+  const elementNewCard = elementsTemplate.content.cloneNode(true);
+  const image = elementNewCard.querySelector('.element__image');
+  const ImageLink = elementNewCard.querySelector('.buttont_type_like');
+  const buttonDelete = elementNewCard.querySelector('.button_do_element-delete');
+  elementNewCard.querySelector('.element__signature').textContent = name;
   image.src = link;
   image.alt = name;
   image.addEventListener('click', function () { 
@@ -55,17 +55,17 @@ function createCardNew(name, link) {
   buttonDelete.addEventListener('click', function() {
     buttonDelete.closest('.element').remove();
    });
-  return elementCardNew;
+  return elementNewCard;
 }
 
-function addCardNew(CardNew) { 
-  elements.prepend(CardNew);
+function addNewCard(newCard) { 
+  elements.prepend(newCard);
 }
 
 function createInitialCard() {
   initialCards.forEach(function (elem) {
-  const CardNew = createCardNew(elem.name, elem.link);
-  addCardNew(CardNew);
+  const newCard = createNewCard(elem.name, elem.link);
+  addNewCard(newCard);
   })
 }
 
@@ -85,32 +85,35 @@ function submitFormProfile(evt) {/*заменить*/
 /*карточки*/
 function submitFormCard(evt) {
   evt.preventDefault();
-  const CardNew =  createCardNew(elementTitle.value, elementUrl.value);
-  addCardNew(CardNew);
+  const newCard =  createNewCard(elementTitle.value, elementUrl.value);
+  addNewCard(newCard);
   closePopup(widowPopupCard);
   formCard.reset();
   checkButtonValidateImputs(formCard, configForm);
 }
 
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', (evt) => {
-    if  ( evt.key === ecs ) {
-      closePopup(popup); //на странице только 1 popup_opened
-    }
-  });
+  document.addEventListener('keydown', checkKeypressEsc);
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', checkKeypressEsc);
 }
 
+function checkKeypressEsc (evt) {
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+  
+}
 createInitialCard();
-
 
 editProfileBtn.addEventListener('click', openPopupProfile); //профиль
 formProfile.addEventListener('submit', submitFormProfile);
 
-addElementBtn.addEventListener('click', () => { openPopup(widowPopupCard)});
+addElementBtn.addEventListener('click', () => {openPopup(widowPopupCard)}); //карточка
 formCard.addEventListener('submit', submitFormCard);
 
 popups.forEach( (popup) => {
@@ -122,4 +125,3 @@ popups.forEach( (popup) => {
 });
 
 enableValidation(configForm);
-export { configForm };
