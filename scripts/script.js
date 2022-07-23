@@ -64,9 +64,9 @@ function addNewCard(newCard) {
 
 function createInitialCard() {
   initialCards.forEach(function (elem) {
-  const newCard = createNewCard(elem.name, elem.link);
-  addNewCard(newCard);
-  })
+    const newCard = createNewCard(elem.name, elem.link);
+    addNewCard(newCard);
+  });
 }
 
 /*Профиль*/ 
@@ -95,14 +95,14 @@ function submitFormCard(evt) {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', checkKeypressEsc);
+  document.addEventListener('keydown', checkKeyPressEsc);
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', checkKeypressEsc);
+  document.removeEventListener('keydown', checkKeyPressEsc);
 }
 
-function checkKeypressEsc (evt) {
+function checkKeyPressEsc (evt) {
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
   }
