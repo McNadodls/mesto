@@ -64,19 +64,24 @@ class Element {
     return cardElement;
   }
 
+
   generateElement() {
     this._element = this._getTamplete ();
+    this._image = this._element.querySelector('.element__image');
+    this._signature = this._element.querySelector('.element__signature');
+    this._like = this._element.querySelector(".buttont_type_like");
+    this._delite = this._element.querySelector(".button_do_element-delete");
     this._setListenerCard();
     
-    this._element.querySelector('.element__image').src = this._link;
-    this._element.querySelector('.element__signature').textContent = this._name;
+    this._image.src = this._link;
+    this._signature.textContent = this._name;
     return this._element;
   }
   _setListenerCard () {
-    this._element.querySelector(".buttont_type_like").addEventListener("click", () => {
+    this._like.addEventListener("click", () => {
       this._triggerLikeClick();
     });
-    this._element.querySelector(".button_do_element-delete").addEventListener("click", () => {
+    this._delite.addEventListener("click", () => {
       this._triggerDeleteClick();
     });
     this._element.querySelector('.element__image').addEventListener("click", () => {
@@ -84,24 +89,20 @@ class Element {
     });
   }
   _triggerLikeClick () {
-    this._element.querySelector(".buttont_type_like").classList.toggle("buttont_type_like-active");
+    this._like.classList.toggle("buttont_type_like-active");
   }
-
   _triggerDeleteClick () {
     this._element.remove();
   }
-  
   _triggerImageClick () {
     imagePopup.src = this._link;
     imagePopup.alt = this._name;
-    console.log(this.link);
     signaturePopup.textContent = this._name;
     openPopup(widowPopupImage);
   }
 
 }
 function createNewCard (array){
-  console.log(array);
   array.forEach((dataElem) => {
   const newElement = new Element(dataElem, '#elements-template');
   const cart = newElement.generateElement();
