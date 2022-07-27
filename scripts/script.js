@@ -35,13 +35,86 @@ const configForm = {
   errorClass: "popup__input-error_active",
 };
 
-function createNewCard(name, link) {
+/*class Form {
+  constructor(data, #templateSelector){
+    this._title = data.title;
+    this._signature = data.signature;
+    this._submitButton = data.submitButton;
+    this._closeButton = data.closeButton;
+    
+  }
+}*/
+
+
+
+class Element {
+  constructor(dataElem, templateSelector){
+    this._name = dataElem.name;
+    this._link = dataElem.link;
+    this._templateSelector = templateSelector;
+  }
+
+  _getTamplete () {
+    const cardElement = document
+    .querySelector(this._templateSelector)
+    .content
+    .querySelector('.element')
+    .cloneNode(true);
+
+    return cardElement;
+  }
+
+  generateElement() {
+    this._element = this._getTamplete ();
+    this._setListenerCard();
+    
+    this._element.querySelector('.element__image').src = this._link;
+    this._element.querySelector('.element__signature').textContent = this._name;
+    return this._element;
+  }
+  _setListenerCard () {
+    this._element.querySelector(".buttont_type_like").addEventListener("click", () => {
+      this._triggerLikeClick();
+    });
+    this._element.querySelector(".button_do_element-delete").addEventListener("click", () => {
+      this._triggerDeleteClick();
+    });
+    this._element.querySelector('.element__image').addEventListener("click", () => {
+      this._triggerImageClick();
+    });
+  }
+  _triggerLikeClick () {
+    this._element.querySelector(".buttont_type_like").classList.toggle("buttont_type_like-active");
+  }
+
+  _triggerDeleteClick () {
+    this._element.remove();
+  }
+  
+  _triggerImageClick () {
+    imagePopup.src = this._link;
+    imagePopup.alt = this._name;
+    console.log(this.link);
+    signaturePopup.textContent = this._name;
+    openPopup(widowPopupImage);
+  }
+
+}
+function createNewCard (array){
+  console.log(array);
+  array.forEach((dataElem) => {
+  const newElement = new Element(dataElem, '#elements-template');
+  const cart = newElement.generateElement();
+  document.querySelector('.elements').prepend(cart);
+});
+}
+
+
+/*function createNewCard(name, link) {
   const elementNewCard = elementsTemplate.content.cloneNode(true);
   const image = elementNewCard.querySelector(".element__image");
   const ImageLink = elementNewCard.querySelector(".buttont_type_like");
-  const buttonDelete = elementNewCard.querySelector(
-    ".button_do_element-delete"
-  );
+  const buttonDelete = elementNewCard.querySelector(".button_do_element-delete");
   elementNewCard.querySelector(".element__signature").textContent = name;
   image.src = link;
   image.alt = name;
@@ -69,7 +142,7 @@ function createInitialCard() {
     const newCard = createNewCard(elem.name, elem.link);
     addNewCard(newCard);
   });
-}
+}*/
 
 /*Профиль*/
 function openPopupProfile() {
@@ -89,8 +162,13 @@ function submitFormProfile(evt) {
 /*карточки*/
 function submitFormCard(evt) {
   evt.preventDefault();
-  const newCard = createNewCard(elementTitle.value, elementUrl.value);
-  addNewCard(newCard);
+  const newCardConfig = [
+    {
+      name: elementTitle.value,
+      link: elementUrl.value
+    }
+  ]
+  createNewCard(newCardConfig);
   closePopup(widowPopupCard);
   formCard.reset();
   checkButtonValidateImputs(formCard, configForm);
@@ -110,7 +188,8 @@ function checkKeyPressEsc(evt) {
     closePopup(document.querySelector(".popup_opened"));
   }
 }
-createInitialCard();
+//createInitialCard();
+createNewCard(initialCards);
 
 editProfileBtn.addEventListener("click", openPopupProfile); //профиль
 formProfile.addEventListener("submit", submitFormProfile);
