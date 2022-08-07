@@ -2,6 +2,9 @@ class ValidateForm {
   constructor(formCard, config) {
     this._config = config;
     this._formList = document.querySelector(formCard);
+
+    this.inputList = Array.from(this._formList.querySelectorAll(this._config.inputSelector));
+    this.buttonElement = this._formList.querySelector(this._config.submitButtonSelector);
   }
 
   _checkInputValidity (inputElement) {
@@ -28,7 +31,6 @@ class ValidateForm {
   }
 
   _setEventListeners () {
-    this.inputList = Array.from(this._formList.querySelectorAll(this._config.inputSelector));
     this.inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
@@ -38,14 +40,12 @@ class ValidateForm {
   
 
   _hasInvalidInput () {
-    this.inputList = Array.from(this._formList.querySelectorAll(this._config.inputSelector));
     return this.inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
   checkButtonValidateImputs () {
-    this.buttonElement = this._formList.querySelector(this._config.submitButtonSelector);
     if (!this._hasInvalidInput()) {
       this.buttonElement.removeAttribute("disabled");
       this.buttonElement.classList.remove(this._config.inactiveButtonClass);
