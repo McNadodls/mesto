@@ -4,7 +4,7 @@ class ValidateForm {
     this._formList = document.querySelector(formCard);
   }
 
-  _checkInputValidity(inputElement) {
+  _checkInputValidity (inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, inputElement.validationMessage);
     } else {
@@ -13,37 +13,38 @@ class ValidateForm {
     this.checkButtonValidateImputs();
   }
 
-  _showInputError(inputElement, errorMessage) {
+  _showInputError (inputElement, errorMessage) {
     this.errorElement = this._formList.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._config.inputErrorClass);
     this.errorElement.classList.add(this._config.errorClass);
     this.errorElement.textContent = errorMessage;
   }
 
-  _hideInputError(inputElement) {
+  _hideInputError (inputElement) {
     this.errorElement = this._formList.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._config.inputErrorClass);
     this.errorElement.classList.remove(this._config.errorClass);
     this.errorElement.textContent = "";
   }
 
-  _setEventListeners() {
+  _setEventListeners () {
     this.inputList = Array.from(this._formList.querySelectorAll(this._config.inputSelector));
     this.inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
       });
     });
-  }
+  };
+  
 
-  _hasInvalidInput() {
+  _hasInvalidInput () {
     this.inputList = Array.from(this._formList.querySelectorAll(this._config.inputSelector));
     return this.inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
-  checkButtonValidateImputs() {
+  checkButtonValidateImputs () {
     this.buttonElement = this._formList.querySelector(this._config.submitButtonSelector);
     if (!this._hasInvalidInput()) {
       this.buttonElement.removeAttribute("disabled");
@@ -53,7 +54,7 @@ class ValidateForm {
       this.buttonElement.classList.add(this._config.inactiveButtonClass);
     }
   }
-  enableValidation() {
+  enableValidation () {
     this._setEventListeners();
     this.checkButtonValidateImputs();
   }
