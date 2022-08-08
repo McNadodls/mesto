@@ -23,8 +23,8 @@ const elementTitle = document.querySelector(".popup__input_type_title");//popup 
 const elementUrl = document.querySelector(".popup__input_type_url-img");//popup url карточки 
 
 const widowPopupImage = document.querySelector(".popup_type_img");
-const imagePopup = widowPopupImage.querySelector(".popup__image");
-const signaturePopup = widowPopupImage.querySelector(".popup__signature");
+const imagePopup = document.querySelector(".popup__image");
+const signaturePopup = document.querySelector(".popup__signature");
 
 const configForm = {
   formSelector: ".popup__form",
@@ -50,22 +50,19 @@ function createNewCard (name, link) { //функция создания карт
   putNewCard(newElement);
 }
 
-function putNewCard (newElement) {//добавление карточки в DOM
-  elementsArea.prepend(newElement); 
-  setListenerImage(newElement);
-  
-}
-
-function setListenerImage (newElement) {//слушатель для открытия popup с фото
+function openPopupImage (newElement) {//открытие popup с фото
   const cardImage = newElement.querySelector(".element__image");
   const signatureCard = newElement.querySelector(".element__signature");
-  cardImage.addEventListener("click", () => {
-    imagePopup.src = cardImage.src;
-    imagePopup.alt = cardImage.alt;
-    signaturePopup.textContent = signatureCard.textContent;
-    openPopup(widowPopupImage);
-  });
+  imagePopup.src = cardImage.src;
+  imagePopup.alt = cardImage.alt;
+  signaturePopup.textContent = signatureCard.textContent;
+  openPopup(widowPopupImage);
 };
+
+function putNewCard (newElement) {//добавление карточки в DOM
+  elementsArea.prepend(newElement); 
+}
+
 
 function openPopupProfile () { //открыть изменения профиля
   openPopup(widowPopupProfile);
@@ -126,5 +123,4 @@ formCard.addEventListener("submit", submitFormCard);
 popupCardValidate.enableValidation();
 popupProfileValidate.enableValidation();
 
-
-
+export{openPopupImage};

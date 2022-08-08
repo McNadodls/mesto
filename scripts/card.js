@@ -1,3 +1,5 @@
+import {openPopupImage} from './script.js';
+
 class Card {
   constructor(name, link, templateSelector) {
     this._name = name;
@@ -31,7 +33,9 @@ class Card {
     this._delete.addEventListener("click", () => {
       this._triggerDeleteClick ();
     });
-    
+    this._image.addEventListener("click", () => {
+      openPopupImage(this._element);
+    });
   }
 
   _triggerLikeClick () {
