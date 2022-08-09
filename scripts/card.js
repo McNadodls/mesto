@@ -34,7 +34,7 @@ class Card {
       this._triggerDeleteClick ();
     });
     this._image.addEventListener("click", () => {
-      openPopupImage(this._element);
+      openPopupImage(this._image, this._signature);
     });
   }
 

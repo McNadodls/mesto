@@ -50,12 +50,10 @@ function createNewCard (name, link) { //функция создания карт
   putNewCard(newElement);
 }
 
-function openPopupImage (newElement) {//открытие popup с фото
-  const cardImage = newElement.querySelector(".element__image");
-  const signatureCard = newElement.querySelector(".element__signature");
-  imagePopup.src = cardImage.src;
-  imagePopup.alt = cardImage.alt;
-  signaturePopup.textContent = signatureCard.textContent;
+function openPopupImage (image, signature) {//открытие popup с фото
+  imagePopup.src = image.src;
+  imagePopup.alt = image.alt;
+  signaturePopup.textContent = signature.textContent;
   openPopup(widowPopupImage);
 };
 
