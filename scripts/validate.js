@@ -1,10 +1,15 @@
-class ValidateForm {
+export default class ValidateForm {
   constructor(formCard, config) {
     this._config = config;
     this._formList = document.querySelector(formCard);
-
     this.inputList = Array.from(this._formList.querySelectorAll(this._config.inputSelector));
     this.buttonElement = this._formList.querySelector(this._config.submitButtonSelector);
+  }
+
+  _getInput({handle}) {
+    this.inputList.forEach((inputElement) => {
+      handle(inputElement);
+    });
   }
 
   _checkInputValidity (inputElement) {
@@ -13,7 +18,7 @@ class ValidateForm {
     } else {
       this._hideInputError(inputElement);
     }
-    this.checkButtonValidateImputs();
+    this._checkButtonValidateImputs();
   }
 
   _showInputError (inputElement, errorMessage) {
@@ -31,12 +36,14 @@ class ValidateForm {
   }
 
   _setEventListeners () {
-    this.inputList.forEach((inputElement) => {
-      inputElement.addEventListener("input", () => {
-        this._checkInputValidity(inputElement);
-      });
+    this._getInput({
+      handle: (inputElement) => {
+        inputElement.addEventListener("input", () => {
+          this._checkInputValidity(inputElement);
+        })
+      }
     });
-  };
+  }
   
 
   _hasInvalidInput () {
@@ -45,7 +52,7 @@ class ValidateForm {
     });
   }
 
-  checkButtonValidateImputs () {
+  _checkButtonValidateImputs () {
     if (!this._hasInvalidInput()) {
       this.buttonElement.removeAttribute("disabled");
       this.buttonElement.classList.remove(this._config.inactiveButtonClass);
@@ -54,9 +61,22 @@ class ValidateForm {
       this.buttonElement.classList.add(this._config.inactiveButtonClass);
     }
   }
+
+  _hideInputErrorMessage () {
+    this._getInput({
+      handle: (inputElement) => {
+        this._hideInputError (inputElement);
+      }
+    });
+  }
+
+  switchStatusForm () {//меняет состояние кнопки и уберает errorMessage
+    this._hideInputErrorMessage ()
+    this._checkButtonValidateImputs ();
+  }
+
   enableValidation () {
     this._setEventListeners();
-    this.checkButtonValidateImputs();
+    this._checkButtonValidateImputs();
   }
 }
-export { ValidateForm };

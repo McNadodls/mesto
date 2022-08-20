@@ -1,10 +1,10 @@
-import {openPopupImage} from './script.js';
-
-class Card {
-  constructor(name, link, templateSelector) {
-    this._name = name;
-    this._link = link;
-    this._templateSelector = templateSelector;
+export default class Card {
+  constructor(data, templateSelector, handleCardClick) {
+    this._data = data;
+    this._name = data.name;
+    this._link = data.link;
+    this._templateSelector = (templateSelector);
+    this._handleCardClick = handleCardClick;
   }
 
   _getTamplete () {
@@ -21,6 +21,7 @@ class Card {
     this._like = this._element.querySelector(".buttont_type_like");
     this._delete = this._element.querySelector(".button_do_element-delete");
     this._image.src = this._link;
+    this._image.alt = this._name;
     this._signature.textContent = this._name;
     this._setListenerCard ();
     return this._element;
@@ -34,7 +35,7 @@ class Card {
       this._triggerDeleteClick ();
     });
     this._image.addEventListener("click", () => {
-      openPopupImage(this._image, this._signature);
+      this._handleCardClick(this._data);
     });
   }
 
@@ -45,6 +46,5 @@ class Card {
   _triggerDeleteClick () {
     this._element.remove();
   }
-
 }
-export { Card };
+
