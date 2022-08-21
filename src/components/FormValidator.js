@@ -1,7 +1,7 @@
 export default class FormValidator {
   constructor(formCard, config) {
     this._config = config;
-    this._formList = document.querySelector(formCard);
+    this._formList = formCard;
     this.inputList = Array.from(this._formList.querySelectorAll(this._config.inputSelector));
     this.buttonElement = this._formList.querySelector(this._config.submitButtonSelector);
   }
@@ -45,7 +45,6 @@ export default class FormValidator {
     });
   }
   
-
   _hasInvalidInput () {
     return this.inputList.some((inputElement) => {
       return !inputElement.validity.valid;
