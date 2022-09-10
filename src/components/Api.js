@@ -4,6 +4,16 @@ export default class Api {
     this._authorization = authorization;
     
   }
+
+  _checkResponse (res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return this.enterError(res);
+  }
+  enterError (err) {
+    Promise.reject(`Ошибка: ${err.status}`);
+  }
   
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -12,12 +22,7 @@ export default class Api {
         authorization: this._authorization
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }) 
+      .then(this._checkResponse);
   } 
 
   getInitialCards() {
@@ -27,12 +32,7 @@ export default class Api {
         authorization: this._authorization
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse);
   }
 
   changeProfileInfo(name, about) {
@@ -51,7 +51,7 @@ export default class Api {
        if (res.ok) {
          return res.json();
        }
-       return Promise.reject(`Ошибка: ${res.status}`);
+       return this.enterError(res);
     })
   }
 
@@ -67,12 +67,7 @@ export default class Api {
         link: link
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse);
   }
 
   handleAvatar(avatar) {
@@ -86,12 +81,7 @@ export default class Api {
         avatar: avatar
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse);
   }
 
   deleteCard(id) {
@@ -106,7 +96,7 @@ export default class Api {
         if (res.ok) {
           return true;
         }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return this.enterError(res);
       })
   }
 
@@ -118,12 +108,7 @@ export default class Api {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse);
   }
 
   removeLike(id) {
@@ -134,12 +119,7 @@ export default class Api {
         'Content-Type': 'application/json'
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+     .then(this._checkResponse);
   }
 
 

@@ -42,7 +42,6 @@ export default class Card {
 
   _setListenerCard () {
     this._like.addEventListener("click", () => {
-      this._triggerLikeClick ();
       this._statusLike(this._like, this._likes, this._data._id);
     });
     this._delete.addEventListener("click", () => {
@@ -51,10 +50,6 @@ export default class Card {
     this._image.addEventListener("click", () => {
       this._handleCardClick(this._data);
     });
-  }
-
-  _triggerLikeClick () {
-    this._like.classList.toggle("buttont_type_like-active");
   }
 }
 
