@@ -1,4 +1,4 @@
-import "./pages/index.css";
+import "./index.css";
 import {btnEditProfile, btnAddElement, avatar, configForm} from "../components/utils/constants.js";
 
 import Card from "../components/Card.js";
