@@ -53,12 +53,11 @@ function handleDeleteClick(elem) {
   confirmPopup.setElement(elem);
 
 }
-function statusLike (like, counter, id) {
-  like.classList.toggle("buttont_type_like-active");
-  if(like.classList.contains("buttont_type_like-active")){
+function statusLike (id) {
+  if(!(this.isLiked())){
     api.putLike(id)
       .then (result => {
-        counter.textContent = result.likes.length;
+        this.putLikesArray(result.likes);
       })
       .catch((err) => {
         api.enterError (err);
@@ -66,7 +65,7 @@ function statusLike (like, counter, id) {
     } else {
     api.removeLike(id)
       .then (result => {
-        counter.textContent = result.likes.length;
+        this.putLikesArray(result.likes);
       })
       .catch((err) => {
         api.enterError (err);
